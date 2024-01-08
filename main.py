@@ -4,7 +4,7 @@ from order_model import OrderModel
 
 def main():
 
-    stock_market2: StockMarketABC = StockMarket()
+    stock_market: StockMarketABC = StockMarket()
 
     orders = [
     {"Id": "001", "Order": "Buy", "Type": "Add", "Price": 20.0, "Quantity": 100},
@@ -18,4 +18,4 @@ def main():
     for order in orders:
         order = {key.lower(): value for key, value in order.items()}
         order_model: OrderModel = OrderModel(**order)
-        stock_market2.place_order(order_model)
+        stock_market.place_order(order_model)

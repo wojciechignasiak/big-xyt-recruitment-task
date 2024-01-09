@@ -59,7 +59,7 @@ class StockMarket(StockMarketABC):
             buy_orders = tuple(filter(lambda x: x.order == "Buy", self.filtered_orders))
             if buy_orders:
                 best_buy_price = min(buy_orders, key=lambda x: x.price).price
-                sum_of_buy_orders = sum(order.quantity for order in self.all_orders if order.price == best_buy_price)
+                sum_of_buy_orders = sum(order.quantity for order in buy_orders if order.price == best_buy_price)
             else:
                 best_buy_price = 0
                 sum_of_buy_orders = 0
@@ -67,7 +67,7 @@ class StockMarket(StockMarketABC):
             sell_orders = tuple(filter(lambda x: x.order == "Sell", self.filtered_orders))
             if sell_orders:
                 best_sell_price = max(sell_orders, key=lambda x: x.price).price
-                sum_of_sell_orders = sum(order.quantity for order in self.all_orders if order.price == best_sell_price)
+                sum_of_sell_orders = sum(order.quantity for order in sell_orders if order.price == best_sell_price)
             else:
                 best_sell_price = 0
                 sum_of_sell_orders = 0
